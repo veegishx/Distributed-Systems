@@ -15,7 +15,7 @@ public class GymClient extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         Parent root = FXMLLoader.load(getClass().getResource("fxmlUserInterfaces/InitializeConnection.fxml"));
-        primaryStage.setTitle("IntegriFit Gym Cient");
+        primaryStage.setTitle("IntegriFit Gym Client");
         primaryStage.setScene(new Scene(root, 450, 250));
         primaryStage.show();
         Scene scene = primaryStage.getScene();
