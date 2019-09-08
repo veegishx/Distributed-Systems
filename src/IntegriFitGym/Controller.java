@@ -3,7 +3,6 @@ package IntegriFitGym;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -11,11 +10,9 @@ import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
-import java.net.URL;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.Optional;
-import java.util.ResourceBundle;
 import java.util.Scanner;
 
 public class Controller {
@@ -38,6 +35,8 @@ public class Controller {
     public TextField updateResidentialAddress;
     public Slider updateMembershipDuration;
     public TextField deleteNationalId;
+    public TextField initHostname;
+    public TextField initPort;
     @FXML
     private TextField firstNameTextBox;
     @FXML
@@ -71,8 +70,8 @@ public class Controller {
     
 
     public static Scanner in = new Scanner(System.in);
-    public final static String hostname = "localhost";
-    public final static int portNumber = 59090;
+    public static String serverHostName = "localhost";
+    public static int serverPortNumber = 59090;
     private Socket connectionSocket;
     private static GymData clientData;
     public static ObjectInputStream objInStream;
@@ -81,8 +80,7 @@ public class Controller {
 
     public void connect() {
         try {
-            this.connectionSocket = new Socket(hostname, portNumber);
-
+            this.connectionSocket = new Socket(serverHostName, serverPortNumber);
             InputStream responseFromServer = this.connectionSocket.getInputStream();
             objInStream = new ObjectInputStream(responseFromServer);
 
@@ -185,7 +183,6 @@ public class Controller {
 
     public void handleRegistration(ActionEvent actionEvent) {
         try {
-
             connect();
             Parent registerUi = FXMLLoader.load(getClass().getResource("fxmlUserInterfaces/Create.fxml"));
             Stage stage = new Stage();
@@ -224,6 +221,9 @@ public class Controller {
             alert.setHeaderText("Account Successfully Created");
             alert.setContentText("Press OK to continue");
             Optional<ButtonType> result = alert.showAndWait();
+
+            status();
+
         } catch (IOException io) {
             io.printStackTrace();
         }
@@ -236,8 +236,7 @@ public class Controller {
             objOutStream.writeUTF("readAll");
             objOutStream.flush();
             objOutStream = null;
-            gymDataArrayList = (ArrayList) objInStream.readObject();
-            System.out.println(gymDataArrayList.get(gymDataArrayList.size() - 1).getFirstName());
+            gymDataArrayList = (ArrayList) objInStream.readObject();;
             gymDataArrayList.get(gymDataArrayList.size() - 1);
             fetchFirstName.setText(gymDataArrayList.get(gymDataArrayList.size() - 1).getFirstName());
             fetchLastName.setText(gymDataArrayList.get(gymDataArrayList.size() - 1).getLastName());
@@ -254,6 +253,8 @@ public class Controller {
             alert.setHeaderText("Data Successfully Fetched");
             alert.setContentText("Press OK to continue");
             Optional<ButtonType> result = alert.showAndWait();
+
+            status();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -263,7 +264,7 @@ public class Controller {
 
     public void handleUpdateData(ActionEvent actionEvent) {
         try{
-            connect();
+            //connect();
             String nid = updateNationalId.getText();
             String firstName = updateFirstNameTextBox.getText();
             String lastName = updateLastNameTextBox.getText();
@@ -299,13 +300,15 @@ public class Controller {
             alert.setContentText("Press OK to continue");
             Optional<ButtonType> result = alert.showAndWait();
 
+            status();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
     public void handleDeleteData(ActionEvent actionEvent) {
-        connect();
+        //connect();
         try{
             String nid = deleteNationalId.getText();
 
@@ -322,9 +325,45 @@ public class Controller {
             alert.setContentText("Press OK to continue");
             Optional<ButtonType> result = alert.showAndWait();
 
+            status();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    public void handleInitConnection(ActionEvent actionEvent) {
+        this.serverHostName = initHostname.getText();
+        this.serverPortNumber = Integer.parseInt(initPort.getText());
+        try {
+            //connect();
+
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setTitle("Gym Client Status Alert");
+            alert.setHeaderText("SUCCESS: Connection successfully established to host");
+            alert.setContentText("Press OK to continue");
+            Optional<ButtonType> result = alert.showAndWait();
+
+            Parent mainMenuUi = FXMLLoader.load(getClass().getResource("fxmlUserInterfaces/MainMenu.fxml"));
+            Stage stage = new Stage();
+            stage.setTitle("IntegriFit Main Menu");
+            stage.setScene(new Scene(mainMenuUi));
+            stage.show();
+
+            status();
+
+        } catch (UnknownHostException uhe) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Gym Client Status Alert");
+            alert.setHeaderText("ERROR: Could not establish connection to host");
+            alert.setContentText("Press OK to continue & try again");
+            Optional<ButtonType> result = alert.showAndWait();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public void status() {
+        System.out.println("[STATUS] Data sent over port: " + this.serverPortNumber + "to hostname: " + this.serverHostName);
+    }
 }

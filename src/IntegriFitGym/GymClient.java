@@ -19,26 +19,11 @@ public class GymClient extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("fxmlUserInterfaces/MainMenu.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("fxmlUserInterfaces/InitializeConnection.fxml"));
         primaryStage.setTitle("IntegriFit Gym Cient");
-        primaryStage.setScene(new Scene(root, 450, 500));
+        primaryStage.setScene(new Scene(root, 450, 250));
         primaryStage.show();
         Scene scene = primaryStage.getScene();
-
-        Button btnDelete = (Button) scene.lookup("#deleteBtn");
-        btnDelete.setOnAction(new EventHandler<ActionEvent>() {
-            public void handle(ActionEvent e) {
-                try {
-                    Parent deleteDataUi = FXMLLoader.load(getClass().getResource("fxmlUserInterfaces/DeleteAccount.fxml"));
-                    Stage stage = new Stage();
-                    stage.setTitle("Delete Your Account Data");
-                    stage.setScene(new Scene(deleteDataUi));
-                    stage.show();
-                } catch (IOException ex) {
-                    ex.printStackTrace();
-                }
-            }
-        });
     }
 
 
