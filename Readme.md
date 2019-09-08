@@ -4,7 +4,7 @@ This is a **basic** java implementation of a TCP client/server application for C
 
 #### Team Members
 * Ashray Bhagbut 
-* Kaushik Nihal Shyam 
+* Kaushik Nihal Shyam Huneewooth
 * Veegish Ramdani 
 
 #### Structure
