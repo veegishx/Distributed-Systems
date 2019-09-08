@@ -10,6 +10,7 @@ import javafx.scene.control.*;
 import javafx.stage.Stage;
 
 import java.io.*;
+import java.net.ConnectException;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -362,6 +363,12 @@ public class Controller {
             Optional<ButtonType> result = alert.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
+        } catch (IllegalArgumentException iae) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Gym Client Status Alert");
+            alert.setHeaderText("ERROR: Port specified out of range");
+            alert.setContentText("Press OK to continue & try again");
+            Optional<ButtonType> result = alert.showAndWait();
         }
     }
 
