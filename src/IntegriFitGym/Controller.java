@@ -1,5 +1,6 @@
 package IntegriFitGym;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -264,7 +265,7 @@ public class Controller {
 
     public void handleUpdateData(ActionEvent actionEvent) {
         try{
-            //connect();
+            connect();
             String nid = updateNationalId.getText();
             String firstName = updateFirstNameTextBox.getText();
             String lastName = updateLastNameTextBox.getText();
@@ -308,7 +309,7 @@ public class Controller {
     }
 
     public void handleDeleteData(ActionEvent actionEvent) {
-        //connect();
+        connect();
         try{
             String nid = deleteNationalId.getText();
 
@@ -336,7 +337,8 @@ public class Controller {
         this.serverHostName = initHostname.getText();
         this.serverPortNumber = Integer.parseInt(initPort.getText());
         try {
-            //connect();
+            this.connectionSocket = new Socket(serverHostName, serverPortNumber);
+            connectionSocket.close();
 
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Gym Client Status Alert");
@@ -365,5 +367,9 @@ public class Controller {
 
     public void status() {
         System.out.println("[STATUS] Data sent over port: " + this.serverPortNumber + "to hostname: " + this.serverHostName);
+    }
+
+    public void handleCloseWindow(ActionEvent actionEvent) {
+        Platform.exit();
     }
 }

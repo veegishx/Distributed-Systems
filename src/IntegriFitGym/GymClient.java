@@ -1,15 +1,10 @@
 package IntegriFitGym;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
 import javafx.stage.Stage;
-
-import java.io.*;
 
 public class GymClient extends Application {
     /*
@@ -24,8 +19,9 @@ public class GymClient extends Application {
         primaryStage.setScene(new Scene(root, 450, 250));
         primaryStage.show();
         Scene scene = primaryStage.getScene();
-    }
 
+
+    }
 
     public static void main(String[] args)
     {
