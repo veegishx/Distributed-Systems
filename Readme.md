@@ -27,4 +27,6 @@ This is a **basic** java implementation of a TCP client/server application for C
 │           └── style.css
 ```
 
-![IntegriFitScreenshot](IntegriFitScreenshot.png)
+![IntegriFitHostConfiguration](IntegriFitClient1.png)
+![IntegriFitMainMenu](IntegriFitClient2.png)
+![IntegriFitCreateAccount](IntegriFitScreenshot.png)
