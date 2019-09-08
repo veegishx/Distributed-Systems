@@ -12,12 +12,12 @@ This is a **basic** java implementation of a TCP client/server application for C
 ├── src
 │   ├── GymData.dat
 │   └── IntegriFitGym
-│       ├── Controller.java
-│       ├── GymClient.java
-│       ├── GymData.java
-│       ├── GymServer.java
+│       ├── Controller.java [Core Logic]
+│       ├── GymClient.java [JavaFX Client]
+│       ├── GymData.java [Data Model]
+│       ├── GymServer.java [TCP Server]
 │       ├── Main.java
-│       └── fxmlUserInterfaces
+│       └── fxmlUserInterfaces [JavaFX UI]
 │           ├── Create.fxml
 │           ├── DeleteAccount.fxml
 │           ├── FetchData.fxml
