@@ -358,16 +358,22 @@ public class Controller {
         } catch (UnknownHostException uhe) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Gym Client Status Alert");
-            alert.setHeaderText("ERROR: Could not establish connection to host");
-            alert.setContentText("Press OK to continue & try again");
+            alert.setHeaderText("ERROR: Could not establish connection to specified host.");
+            alert.setContentText("Press OK to continue & try again.");
+            Optional<ButtonType> result = alert.showAndWait();
+        } catch (ConnectException e) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Gym Client Status Alert");
+            alert.setHeaderText("ERROR: Could not establish connection on specified port.");
+            alert.setContentText("Press OK to continue & try again.");
             Optional<ButtonType> result = alert.showAndWait();
         } catch (IOException e) {
             e.printStackTrace();
         } catch (IllegalArgumentException iae) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Gym Client Status Alert");
-            alert.setHeaderText("ERROR: Port specified out of range");
-            alert.setContentText("Press OK to continue & try again");
+            alert.setHeaderText("ERROR: Port specified out of range.");
+            alert.setContentText("Press OK to continue & try again.");
             Optional<ButtonType> result = alert.showAndWait();
         }
     }
