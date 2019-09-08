@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.Reflection?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="626.0" prefWidth="653.0" style="-fx-background-color: #333333;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="IntegriFitGym.Controller">
+   <children>
+      <HBox prefHeight="60.0" prefWidth="415.0">
+         <children>
+            <Label prefHeight="53.0" prefWidth="407.0" text="  Welcome to IntergriFit" textFill="#d4af37">
+               <font>
+                  <Font size="36.0" />
+               </font>
+               <effect>
+                  <Reflection bottomOpacity="0.13" fraction="0.69" topOffset="-9.0" topOpacity="0.32" />
+               </effect>
+            </Label>
+         </children>
+      </HBox>
+      <Pane layoutX="-7.0" layoutY="54.0" prefHeight="596.0" prefWidth="669.0">
+         <children>
+            <Label layoutX="44.0" layoutY="75.0" prefHeight="24.0" prefWidth="69.0" text="Enter NID" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="209.0" prefHeight="24.0" prefWidth="142.0" text="First Name" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="38.0" layoutY="143.0" prefHeight="24.0" prefWidth="102.0" text="Phone Number" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="14.0" layoutY="30.0" opacity="0.94" prefHeight="35.0" prefWidth="375.0" text="Update your account">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+               <textFill>
+                  <LinearGradient endX="1.0" endY="1.0" startX="0.48095238095238096" startY="0.5285714285714286">
+                     <stops>
+                        <Stop color="#c5b358" />
+                        <Stop color="WHITE" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </textFill>
+            </Label>
+            <TextField fx:id="updateNationalId" layoutX="21.0" layoutY="99.0" prefHeight="27.0" prefWidth="244.0" promptText="Enter NID to update Account" style="-fx-border-color: #f39c12; -fx-background-color: #333333; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@style.css" />
+            <TextField fx:id="updatePhoneNumberTextBox" layoutX="21.0" layoutY="167.0" prefHeight="27.0" prefWidth="244.0" promptText="Please Enter your Phone Number" style="-fx-border-color: #f39c12; -fx-background-color: #333333; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@style.css" />
+            <TextField fx:id="updateFirstNameTextBox" layoutX="21.0" layoutY="238.0" prefHeight="27.0" prefWidth="244.0" promptText="Please Enter your new First Name" style="-fx-border-color: #f39c12; -fx-background-color: #333333; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@style.css" />
+            <ImageView fitHeight="189.0" fitWidth="287.0" layoutX="325.0" layoutY="351.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@Gym.jpg" />
+               </image>
+            </ImageView>
+            <Button fx:id="updateInfoBtn" layoutX="162.0" layoutY="505.0" mnemonicParsing="false" onAction="#handleUpdateData" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #d4af37;" text="Update Info" textFill="WHITE" />
+            <Button layoutX="32.0" layoutY="505.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="108.0" style="-fx-background-color: #d4af37;" text="Main Menu" textFill="WHITE" />
+            <Label layoutX="33.0" layoutY="351.0" prefHeight="24.0" prefWidth="172.0" text="Residential Address" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="updateResidentialAddress" layoutX="22.0" layoutY="375.0" prefHeight="27.0" prefWidth="244.0" promptText="Please Enter your new address" style="-fx-border-color: #f39c12; -fx-background-color: #333333; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@style.css" />
+            <Slider fx:id="updateMembershipDuration" blockIncrement="1.0" layoutX="18.0" layoutY="467.0" majorTickUnit="3.0" max="12.0" min="3.0" prefHeight="14.0" prefWidth="244.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" />
+            <Label layoutX="27.0" layoutY="424.0" prefHeight="24.0" prefWidth="234.0" text="Membership Duration in Months" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="330.0" layoutY="75.0" prefHeight="24.0" prefWidth="234.0" text="Medical Treatment" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <RadioButton fx:id="updateRadio1" layoutX="330.0" layoutY="104.0" mnemonicParsing="false" text="None" textFill="WHITE">
+               <toggleGroup>
+                  <ToggleGroup fx:id="updateMedicalCondition" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="updateRadio2" layoutX="429.0" layoutY="104.0" mnemonicParsing="false" text="Ongoing" textFill="WHITE" toggleGroup="$updateMedicalCondition" />
+            <Label layoutX="330.0" layoutY="143.0" prefHeight="24.0" prefWidth="234.0" text="Medications Being Taken" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="updateMedications" layoutX="325.0" layoutY="167.0" prefHeight="27.0" prefWidth="244.0" promptText="Please Enter any medications being taken" style="-fx-border-color: #f39c12; -fx-background-color: #333333; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@style.css" />
+            <Label layoutX="330.0" layoutY="213.0" prefHeight="24.0" prefWidth="234.0" text="Doctor's Name" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="updateDoctorName" layoutX="325.0" layoutY="237.0" prefHeight="27.0" prefWidth="244.0" promptText="Please Enter your doctor's name" style="-fx-border-color: #f39c12; -fx-background-color: #333333; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@style.css" />
+            <Label layoutX="330.0" layoutY="282.0" prefHeight="24.0" prefWidth="234.0" text="Doctor's Number" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="updateDoctorNumber" layoutX="325.0" layoutY="306.0" prefHeight="27.0" prefWidth="244.0" promptText="Please Enter your doctor's number" style="-fx-border-color: #f39c12; -fx-background-color: #333333; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@style.css" />
+            <Label layoutX="33.0" layoutY="281.0" prefHeight="24.0" prefWidth="172.0" text="Last Name" textFill="#f39c12">
+               <font>
+                  <Font name="Arial Bold" size="13.0" />
+               </font>
+            </Label>
+            <TextField fx:id="updateLastNameTextBox" layoutX="22.0" layoutY="305.0" prefHeight="27.0" prefWidth="244.0" promptText="Please Enter your last Name" style="-fx-border-color: #f39c12; -fx-background-color: #333333; -fx-background-insets: 0; -fx-border-radius: 20;" styleClass="text-input" stylesheets="@style.css" />
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>
